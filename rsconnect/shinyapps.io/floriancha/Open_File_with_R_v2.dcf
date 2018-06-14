@@ -5,6 +5,6 @@ account: floriancha
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 340077
-bundleId: 1389104
+bundleId: 1397805
 url: https://floriancha.shinyapps.io/Open_File_with_R_v2/
-when: 1527083132.10677
+when: 1527584489.39774

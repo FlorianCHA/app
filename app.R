@@ -15,6 +15,8 @@ if(!require("DT"))
 {
   install.packages('DT')
 }
+library(DT)
+
 if(!require("ggplot2"))
 {
   install.packages('ggplot2')
@@ -214,7 +216,7 @@ server <- function(input, output) {
     req(input$file2)
     df <- read.csv(input$file2$datapath,header = input$header2,sep = input$sep2)
     df <- data.frame(rownames(df),df)
-    colnames(df) <- c('Id',colnames(df)[2:ncol(df)])
+    colnames(df) <- c('Rownames',colnames(df)[2:ncol(df)])
     if (!is.null(input$nameY))
     {
       p <- ggplot(df,aes(x = df[,colnames(df)==input$nameX],y = df[,colnames(df)==input$nameY]))
@@ -295,7 +297,7 @@ server <- function(input, output) {
       req(input$file2)
       df <- read.table(input$file2$datapath,header = input$header2,sep = input$sep2)
       df <- data.frame(rownames(df),df)
-      colnames(df) <- c('Id',colnames(df)[2:ncol(df)])
+      colnames(df) <- c('Rownames',colnames(df)[2:ncol(df)])
       return(df)}
     nbDecimal <- function(x){
       if (x%%1 ==0) 
@@ -324,7 +326,7 @@ server <- function(input, output) {
       req(input$file2)
       if   (input$typeColor == 'Color by group')
       {
-        selectInput(inputId = 'group', label = 'Color by group',choices = c('Id',colnames(df())),selected = colnames(df())[2])
+        selectInput(inputId = 'group', label = 'Color by group',choices = c('Rownames',colnames(df())),selected = colnames(df())[2])
       }
       else if (input$typeColor == 'Simple color')
       {
@@ -464,7 +466,7 @@ server <- function(input, output) {
       req(input$file2)
       df <- read.csv(input$file2$datapath,header = input$header2,sep = input$sep2)
       df <- data.frame(rownames(df),df)
-      colnames(df) <- c('Id',colnames(df)[2:ncol(df)])
+      colnames(df) <- c('Rownames',colnames(df)[2:ncol(df)])
       X <- df[,colnames(df)==input$nameX1]
       
 
@@ -828,7 +830,7 @@ server <- function(input, output) {
       req(input$file2)
       if   (input$typeColor1 == 'Color by group')
       {
-        selectInput(inputId = 'groupbox', label = 'Color by group',choices = c('Id',colnames(df())),selected = colnames(df())[2])
+        selectInput(inputId = 'groupbox', label = 'Color by group',choices = c('Rownames',colnames(df())),selected = colnames(df())[2])
       }
     })
     output$barplot <- renderPlot({
@@ -845,7 +847,7 @@ server <- function(input, output) {
       req(input$file2)
       df <- read.csv(input$file2$datapath,header = input$header2,sep = input$sep2)
       df <- data.frame(rownames(df),df)
-      colnames(df) <- c('Id',colnames(df)[2:ncol(df)])
+      colnames(df) <- c('Rownames',colnames(df)[2:ncol(df)])
       X <- as.vector(as.character(df[,colnames(df)==input$nameX2]))
       if (!is.null(input$nameY2))
       {
@@ -1009,7 +1011,7 @@ server <- function(input, output) {
       req(input$file2)
       if   (input$typeColor2 == 'Color by group')
       {
-        selectInput(inputId = 'groupbox1', label = 'Color by group',choices = c('Id',colnames(df())),selected = colnames(df())[2])
+        selectInput(inputId = 'groupbox1', label = 'Color by group',choices = c('Rownames',colnames(df())),selected = colnames(df())[2])
       }
     })
     output$boxplot <- renderPlot({
